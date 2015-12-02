@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_read.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/02 15:51:18 by glarivie         ###   ########.fr       */
+/*   Created: 2015/12/02 11:13:49 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/02 12:04:08 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 #include "pattern.h"
 #include "header.h"
 
-#include <stdio.h>
-
-int		main(int argc, char **argv)
+char	*ft_read(char **av, int index)
 {
-	char	*tab;
-	char	**ret;
-	int		i;
+	int					fd;
+	unsigned long long	rd;
+	char				*ret;
 
-	tab = ft_read(argv, 1);
-	ret = ft_dtol(ft_getdata(tab));
-	
-	i = -1;
-	while (ret[++i])
-		printf("%s", ret[i]);
-	return (0);
+	ret = (char *)malloc(sizeof(char) * BUFFER);
+	fd = open(av[index], O_RDONLY);
+	rd = read(fd, ret, BUFFER);
+	close (fd);
+	return (ret);
 }

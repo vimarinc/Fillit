@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dtol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/02 15:51:18 by glarivie         ###   ########.fr       */
+/*   Created: 2015/12/02 13:51:11 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/02 15:53:34 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 #include "pattern.h"
 #include "header.h"
 
-#include <stdio.h>
-
-int		main(int argc, char **argv)
+char	**ft_dtol(char **tab)
 {
-	char	*tab;
-	char	**ret;
-	int		i;
+	int		index;
+	int		col;
+	char	letter;
 
-	tab = ft_read(argv, 1);
-	ret = ft_dtol(ft_getdata(tab));
-	
-	i = -1;
-	while (ret[++i])
-		printf("%s", ret[i]);
-	return (0);
+	col = -1;
+	letter = 'A';
+	while (tab[++col])
+	{
+		index = -1;
+		while (tab[col][++index])
+		{
+			if (tab[col][index] == '#')
+				tab[col][index] = letter;
+		}
+		++letter;
+	}
+	return (tab);
 }
