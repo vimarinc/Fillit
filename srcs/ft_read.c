@@ -6,23 +6,22 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:13:49 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/02 12:04:08 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/06 14:17:40 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "pattern.h"
 #include "header.h"
 
 char	*ft_read(char **av, int index)
 {
 	int					fd;
 	unsigned long long	rd;
-	char				*ret;
+	char				*tab;
 
-	ret = (char *)malloc(sizeof(char) * BUFFER);
+	tab = (char *)malloc(sizeof(char) * BUFFER);
 	fd = open(av[index], O_RDONLY);
-	rd = read(fd, ret, BUFFER);
+	rd = read(fd, tab, BUFFER);
 	close (fd);
-	return (ret);
+	return (tab);
 }
