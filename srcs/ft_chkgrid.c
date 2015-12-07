@@ -15,7 +15,17 @@
 
 static int	ft_chrcnt(char *tab, char c)
 {
-	return ((*tab == c) ? 1 + ft_chrcnt(++tab) : 0);
+	int	count;
+	int	index;
+
+	count = 0;
+	index = -1;
+	while (tab[++index])
+	{
+		if (tab[index] == c)
+			count++;
+	}
+	return (count);
 }
 
 t_bool		ft_chkgrid(char *tab)
@@ -33,7 +43,7 @@ t_bool		ft_chkgrid(char *tab)
 	{
 		if (tab[index] == '.' || tab[index] == '#')
 			count++;
-		if (tab[index] == '\n' && tab[index - 1] != '\n' && count == 4)
+		if (tab[index] == '\n' && tab[index - 1] != '\n' && (count % 4) == 0)
 			line++;
 		if (tab[index] == '\n' && tab[index - 1] == '\n' && (line % 4) == 0)
 			blk++;
@@ -42,7 +52,8 @@ t_bool		ft_chkgrid(char *tab)
 		blk++;
 	if (ft_chrcnt(tab, '.') == (blk * 12)
 			&& ft_chrcnt(tab, '#') == (blk * 4)
-			&& ft_chrcnt(tab, '\n') == (line + block - 1))
-		return (TRUE)
-			return (FALSE);
+			&& ft_chrcnt(tab, '\n') == (line + blk - 1))
+		return (TRUE);
+	else
+		return (FALSE);
 }

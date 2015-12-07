@@ -23,10 +23,7 @@ int		main(int argc, char **argv)
 
 		tab = ft_read(argv, 1);
 		if (ft_chkchr(tab) == FALSE || ft_chkgrid(tab) == FALSE)
-		{
 			write(1, "error\n", 6);
-			return (0);
-		}
 		else
 			write(1, "NICE !\n", 7);
 	}

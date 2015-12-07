@@ -20,7 +20,7 @@ t_bool		ft_chkchr(char *tab)
 	index = -1;
 	while(tab[++index])
 	{
-		if (tab[index] != '\n' || tab[index] != '#' || tab[index] != '.')
+		if (tab[index] != '\n' && tab[index] != '#' && tab[index] != '.')
 			return (FALSE);
 	}
 	return (TRUE);
