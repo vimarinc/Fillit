@@ -23,21 +23,21 @@
 # define TRUE 1
 # define FALSE 0
 
-char				*ft_read(char **av, int index);
-t_bool				ft_chkchr(char *tab);
-t_bool				ft_chkgrid(char *tab);
-
-
 typedef int			t_bool;
 typedef struct		s_lst
 {
 	int				id;
 	t_bool			used;
 	char			*shape;
-	char			*type;
+	int			type;
 	char			type_id;
 	int				angle;
 	struct s_lst	*next;
 }					t_lst;
+
+char				*ft_read(char **av, int index);
+t_bool				ft_chkchr(char *tab);
+t_bool				ft_chkgrid(char *tab);
+t_lst				*ft_lst_init(char *tab);
 
 #endif

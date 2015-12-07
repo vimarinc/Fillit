@@ -11,56 +11,34 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "pattern.h"
 #include "header.h"
 
-void		ft_lst_add(t_list *begin_lst)
+static t_lst	*ft_lst_add(t_lst *begin_lst, int id)
 {
-	t_list	*cursor;
-	t_list	*lst;
+	t_lst	*lst;
 
-	cursor = begin_lst;
-	while (cursor->next != NULL)
-		cursor = cursor->next;
-	if (!(lst = (t_list *)malloc(sizeof(t_list))))
+	if (!(lst = (t_lst *)malloc(sizeof(t_lst))))
 		return (NULL);
-	cursor->next = (*lst);
-	lst->prev = (*cursor);
-	lst->next = NULL;
-	lst->id = cursor->id++;
+	lst->id = id - 1;
 	lst->used = FALSE;
+	lst->next = begin_lst;
 	lst->shape = (char *)malloc(sizeof(char) * 21);
-	lst->type = (char *)malloc(sizeof(char) * 7);
-	lst->type_id = 'X';
-	lst->angle = 0;
-}
-
-t_list		ft_get_begin(char *tab)
-{
-	t_list	*lst;
-
-	if (!(lst = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	lst->prev = NULL;
-	lst->id = 1;
-	lst->used = FALSE;
-	lst->next = NULL;
-	lst->shape = (char *)malloc(sizeof(char) * 21);
-	lst->type = (char *)malloc(sizeof(char) * 7);
-	lst->type_id = 'X';
-	lst->angle = 0;
 	return (lst);
 }
 
-void		ft_lst_init(char *tab, t_list *begin_lst)
+t_lst		*ft_lst_init(char *tab)
 {
-	t_list	*lst;
-	int		cursor;
+	t_lst	*begin_lst;
+	int	cursor;
 
-	lst = begin_lst;
-	cursor = ft_strlen(tab) / 20 + 2;
+	if(!(begin_lst = (t_lst *)malloc(sizeof(t_lst))))
+		return (NULL);
+	cursor = ft_strlen(tab) / 20 + 1;
+	begin_lst->next = NULL;
+	begin_lst->id = cursor - 1;
+	begin_lst->used = FALSE;
+	begin_lst->shape = (char *)malloc(sizeof(char) * 21);
 	while (--cursor)
-	{
-		
-	}
+		begin_lst = ft_lst_add(begin_lst, cursor);
+	return (begin_lst);
 }

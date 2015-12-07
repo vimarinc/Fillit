@@ -20,12 +20,19 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		char	*tab;
+		t_lst	*begin;
 
 		tab = ft_read(argv, 1);
 		if (ft_chkchr(tab) == FALSE || ft_chkgrid(tab) == FALSE)
 			write(1, "error\n", 6);
 		else
 			write(1, "NICE !\n", 7);
+		begin = ft_lst_init(tab);
+		while (begin->next != NULL)
+		{
+			printf("maillon id = %d\n", begin->id);
+			begin = begin->next;
+		}
 	}
 	return (0);
 }
