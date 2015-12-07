@@ -28,9 +28,11 @@ int		main(int argc, char **argv)
 		else
 			write(1, "NICE !\n", 7);
 		begin = ft_lst_init(tab);
+		begin = ft_fill_lst(tab, begin);
 		while (begin->next != NULL)
 		{
 			printf("maillon id = %d\n", begin->id);
+			printf("block :\n%s\n", begin->shape);
 			begin = begin->next;
 		}
 	}

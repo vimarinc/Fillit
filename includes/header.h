@@ -39,5 +39,6 @@ char				*ft_read(char **av, int index);
 t_bool				ft_chkchr(char *tab);
 t_bool				ft_chkgrid(char *tab);
 t_lst				*ft_lst_init(char *tab);
+t_lst				*ft_fill_lst(char *tab, t_lst *begin_lst);
 
 #endif
