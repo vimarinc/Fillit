@@ -12,7 +12,8 @@
 
 NAME 	= fillit
 SRCS 	= srcs/main.c	srcs/ft_read.c	srcs/ft_chkchr.c	srcs/ft_chkgrid.c	\
-	  srcs/ft_lst_init.c	srcs/ft_fill_lst.c	srcs/libft.a\
+	  srcs/ft_lst_init.c	srcs/ft_fill_lst.c	srcs/ft_get_type.c	srcs/ft_lstlen.c	\
+	  srcs/libft.a\
 
 INC		= ./includes
 FLAGS	= -Wall -Wextra -Werror
