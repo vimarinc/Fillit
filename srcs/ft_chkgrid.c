@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 11:42:48 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/06 14:20:14 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/08 09:32:41 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ t_bool		ft_chkgrid(char *tab)
 			&& ft_chrcnt(tab, '#') == (blk * 4)
 			&& ft_chrcnt(tab, '\n') == (line + blk - 1))
 		return (TRUE);
-	else
-		return (FALSE);
+	return (FALSE);
 }

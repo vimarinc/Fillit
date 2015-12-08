@@ -1,46 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_type.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/08 07:59:13 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/08 09:22:22 by glarivie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 
-#include <stdio.h>
+static char		*ft_zton(char *shape)
+{
+	int		index;
 
-t_lst		*ft_get_type(t_lst *begin_lst)
+	index = -1;
+	while (++index < 6)
+	{
+		if (!(shape[index] >= '1' && shape[index] <= '5'))
+			shape[index] = '9';
+	}
+	return (shape);
+}
+
+static int		ft_fill_type(char *s)
+{
+	int		i;
+	int		j;
+	char	*ret;
+
+	i = -1;
+	j = -1;
+	ret = (char *)malloc(sizeof(char) * 7);
+	while (s[++i])
+	{
+		if ((s[i] == '.') && ((s[i + 1] == '#' && s[i - 5] == '#')
+					|| (s[i + 1] == '#' && s[i + 5] == '#')
+					|| (s[i - 1] == '#' && s[i + 5] == '#')
+					|| (s[i - 1] == '#' && s[i - 5] == '#')))
+			ret[++j] = '0';
+		if (s[i] == '#')
+		{
+			j++;
+			ret[j] = (s[i - 1] == '#') ? ret[j - 1] + 1 : '1';
+		}
+	}
+	ret[6] = '\0';
+	return (ft_atoi(ft_zton(ret)));
+}
+
+t_lst			*ft_get_type(t_lst *begin_lst)
 {
 	t_lst	*lst;
-	int		index;
 	int		cursor;
-	int		*ret;
-	int		ret_i;
 
 	lst = begin_lst;
 	cursor = ft_lstlen(begin_lst) + 1;
-	ret = (int *)malloc(sizeof(int) * 6);
 	while (--cursor)
 	{
-		index = -1;
-		ret_i = 0;
-		while (lst->shape[++index])
-		{
-			if ((lst->shape[index] == '.')
-					&& ((lst->shape[index - 5] == '#' && lst->shape[index + 1] == '#')
-					|| (lst->shape[index + 1] == '#' && lst->shape[index + 5] == '#')
-					|| (lst->shape[index - 1] == '#' && lst->shape[index + 5] == '#')
-					|| (lst->shape[index - 5] == '#' && lst->shape[index - 1] == '#')))
-			{
-				ret[ret_i] = 0;
-				ret_i++;
-			}
-			if (lst->shape[index] == '#')
-			{
-				ret[ret_i] = 1;
-				ret_i++;
-			}
-			printf("RET[%d] = %d\n", ret_i, ret[ret_i]);
-		}
-		printf("\n");
-		/*lst->type = ft_atoi(ret);
-		printf("lst->type INT CODE = %d\n", lst->type);
-		*/lst = lst->next;
+		lst->type = ft_fill_type(lst->shape);
+		lst = lst->next;
 	}
 	return (begin_lst);
 }

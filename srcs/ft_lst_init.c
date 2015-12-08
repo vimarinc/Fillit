@@ -6,7 +6,7 @@
 /*   By: glarivie <guillaume.lariviere@stude>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 17:10:15 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/06 14:18:00 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/08 09:30:39 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static t_lst	*ft_lst_add(t_lst *begin_lst, int id)
 	return (lst);
 }
 
-t_lst		*ft_lst_init(char *tab)
+t_lst			*ft_lst_init(char *tab)
 {
 	t_lst	*begin_lst;
-	int	cursor;
+	int		cursor;
 
-	if(!(begin_lst = (t_lst *)malloc(sizeof(t_lst))))
+	if (!(begin_lst = (t_lst *)malloc(sizeof(t_lst))))
 		return (NULL);
 	cursor = ft_strlen(tab) / 20 + 1;
 	begin_lst->next = NULL;

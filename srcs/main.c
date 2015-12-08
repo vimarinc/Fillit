@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/06 14:19:47 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/08 09:23:00 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		main(int argc, char **argv)
 		while (begin->next != NULL)
 		{
 			printf("maillon id = %d\n", begin->id);
-			printf("block :\n%s\n", begin->shape);
-			printf("type = %d\n", begin->type);
+			printf("block :\n%s", begin->shape);
+			printf("type = %d\n\n", begin->type);
 			begin = begin->next;
 		}
 	}
