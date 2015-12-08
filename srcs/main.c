@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/08 09:23:00 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/08 16:59:44 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "header.h"
 
 #include <stdio.h>
+#define DEBUG	printf("DEBUG\n");
 
 int		main(int argc, char **argv)
 {
@@ -21,6 +22,7 @@ int		main(int argc, char **argv)
 	{
 		char	*tab;
 		t_lst	*begin;
+		t_dct	*dictio;
 
 		tab = ft_read(argv, 1);
 		if (ft_chkchr(tab) == FALSE || ft_chkgrid(tab) == FALSE)
@@ -37,6 +39,16 @@ int		main(int argc, char **argv)
 			printf("type = %d\n\n", begin->type);
 			begin = begin->next;
 		}
+		dictio = ft_dct_init();
+		dictio = ft_fill_dct_1(dictio);
+		while (dictio->next != NULL)
+		{
+			printf("code = %d\n", dictio->type);
+			printf("letter = %c\n", dictio->letter);
+			printf("rot = %d\n", dictio->rotation);
+			dictio = dictio->next;
+		}
+		printf("code = %d\n", dictio->type);
 	}
 	return (0);
 }
