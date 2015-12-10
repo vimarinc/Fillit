@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/08 16:59:44 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/10 15:10:12 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,29 @@ int		main(int argc, char **argv)
 			write(1, "error\n", 6);
 		else
 			write(1, "NICE !\n", 7);
-		begin = ft_lst_init(tab);
-		begin = ft_fill_lst(tab, begin);
-		begin = ft_get_type(begin);
-		while (begin->next != NULL)
-		{
-			printf("maillon id = %d\n", begin->id);
-			printf("block :\n%s", begin->shape);
-			printf("type = %d\n\n", begin->type);
-			begin = begin->next;
-		}
 		dictio = ft_dct_init();
 		dictio = ft_fill_dct_1(dictio);
+		begin = ft_lst_init(tab);
+		ft_fill_lst(tab, &begin);
+		ft_get_type(&begin);
+		if (ft_chktype(dictio, begin) == FALSE)
+			write(1, "error\n", 6);
+		else
+			write(1, "NICE !\n", 7);
+		ft_type_angle(&dictio, &begin);
+		while (begin->next != NULL)
+		{
+			printf("id: %d, type: %d\n", begin->id, begin->type);
+			printf("letter: %c, angle: %d\n", begin->type_id, begin->angle);
+			printf("%s\n", begin->shape);
+			begin = begin->next;
+		}
+		printf("NB block : %d\n", ft_dctlen(dictio));
 		while (dictio->next != NULL)
 		{
-			printf("code = %d\n", dictio->type);
-			printf("letter = %c\n", dictio->letter);
-			printf("rot = %d\n", dictio->rotation);
+			printf("code: %d, ltr: %c, rot: %d\n", dictio->type, dictio->letter, dictio->rotation);
 			dictio = dictio->next;
 		}
-		printf("code = %d\n", dictio->type);
 	}
 	return (0);
 }

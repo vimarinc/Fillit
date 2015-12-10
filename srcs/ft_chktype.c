@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dtol.c                                          :+:      :+:    :+:   */
+/*   ft_chktype.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 13:51:11 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/02 15:53:34 by glarivie         ###   ########.fr       */
+/*   Created: 2015/12/09 23:05:52 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/09 23:15:34 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "pattern.h"
 #include "header.h"
 
-char	**ft_dtol(char **tab)
+t_bool		ft_chktype(t_dct *begin_dct, t_lst *begin_lst)
 {
-	int		index;
-	int		col;
-	char	letter;
+	t_dct	*dct;
+	t_lst	*lst;
+	int		count;
 
-	col = -1;
-	letter = 'A';
-	while (tab[++col])
+	lst = begin_lst;
+	count = 0;
+	while (lst->next != NULL)
 	{
-		index = -1;
-		while (tab[col][++index])
+		dct = begin_dct;
+		while (dct->next != NULL)
 		{
-			if (tab[col][index] == '#')
-				tab[col][index] = letter;
+			if (lst->type == dct->type)
+			{
+				count++;
+				break;
+			}
+			else
+				dct = dct->next;
 		}
-		++letter;
+		lst = lst->next;
 	}
-	return (tab);
+	return ((count == ft_lstlen(begin_lst)) ? TRUE : FALSE);
 }

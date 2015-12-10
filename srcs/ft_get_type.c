@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 07:59:13 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/08 09:22:22 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/10 14:55:15 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,16 @@ static int		ft_fill_type(char *s)
 	return (ft_atoi(ft_zton(ret)));
 }
 
-t_lst			*ft_get_type(t_lst *begin_lst)
+void			ft_get_type(t_lst **begin_lst)
 {
 	t_lst	*lst;
 	int		cursor;
 
-	lst = begin_lst;
-	cursor = ft_lstlen(begin_lst) + 1;
+	lst = *begin_lst;
+	cursor = ft_lstlen(*begin_lst) + 1;
 	while (--cursor)
 	{
 		lst->type = ft_fill_type(lst->shape);
 		lst = lst->next;
 	}
-	return (begin_lst);
 }

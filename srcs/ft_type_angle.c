@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_lst.c                                      :+:      :+:    :+:   */
+/*   ft_type_angle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 07:58:34 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/10 14:52:39 by glarivie         ###   ########.fr       */
+/*   Created: 2015/12/09 15:03:21 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/10 15:09:55 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 
-void		ft_fill_lst(char *tab, t_lst **begin_lst)
+void		ft_type_angle(t_dct **begin_dct, t_lst **begin_lst)
 {
+	t_dct	*dct;
 	t_lst	*lst;
-	int		index_tab;
-	int		index_shape;
 
 	lst = *begin_lst;
-	index_tab = -1;
-	index_shape = 0;
-	while (tab[++index_tab])
+	while (lst->next != NULL)
 	{
-		if (tab[index_tab] == '\n' && tab[index_tab - 1] == '\n')
+		dct = *begin_dct;
+		while (dct->next != NULL)
 		{
-			lst->shape[index_shape] = '\0';
-			lst = lst->next;
-			index_shape = 0;
+			if (lst->type == dct->type)
+			{
+				lst->type_id = dct->letter;
+				lst->angle = dct->rotation;
+				break ;
+			}
+			else
+				dct = dct->next;
 		}
-		else
-		{
-			lst->shape[index_shape] = tab[index_tab];
-			index_shape++;
-		}
+		lst = lst->next;
 	}
 }

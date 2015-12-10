@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:07:59 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/08 16:54:48 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/10 15:10:40 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,14 @@ char				*ft_read(char **av, int index);
 t_bool				ft_chkchr(char *tab);
 t_bool				ft_chkgrid(char *tab);
 t_lst				*ft_lst_init(char *tab);
-t_lst				*ft_fill_lst(char *tab, t_lst *begin_lst);
+void				ft_fill_lst(char *tab, t_lst **begin_lst);
 int					ft_lstlen(t_lst *begin_lst);
 int					ft_dctlen(t_dct *begin_dct);
-t_lst				*ft_get_type(t_lst *begin_lst);
+void				ft_get_type(t_lst **begin_lst);
 t_dct				*ft_dct_init(void);
 t_dct				*ft_dct_blk(t_dct *begin_dct, int code, char ltr, int rot);
 t_dct				*ft_fill_dct_1(t_dct *begin_dct);
+void				ft_type_angle(t_dct **begin_dct, t_lst **begin_lst);
+t_bool				ft_chktype(t_dct *begin_dct, t_lst *begin_lst);
 
 #endif
