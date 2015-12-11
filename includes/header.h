@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:07:59 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/10 15:10:40 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/11 18:44:59 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ t_dct				*ft_dct_blk(t_dct *begin_dct, int code, char ltr, int rot);
 t_dct				*ft_fill_dct_1(t_dct *begin_dct);
 void				ft_type_angle(t_dct **begin_dct, t_lst **begin_lst);
 t_bool				ft_chktype(t_dct *begin_dct, t_lst *begin_lst);
+void				ft_fix_shape(t_lst **begin_lst);
+char				**ft_get_map(t_lst *begin_lst);
+void				ft_print_map(char **tab, t_lst *begin_lst);
 
 #endif
