@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_map.c                                     :+:      :+:    :+:   */
+/*   ft_print_blk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 18:33:22 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/13 10:26:48 by glarivie         ###   ########.fr       */
+/*   Created: 2015/12/13 10:28:23 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/13 11:31:51 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 
-void		ft_print_map(char **tab, t_lst *begin_lst)
+void		ft_print_blk(char **blk)
 {
-	int		len;
-	int		index;
+	int		col;
 
-	index = -1;
-	len = (ft_lstlen(begin_lst) / 2 + 1) * 4;
-	while (++index < len)
+	col = -1;
+	while (++col < 4)
 	{
-		ft_putstr(tab[index]);
+		ft_putstr(blk[col]);
 		ft_putchar('\n');
 	}
 }

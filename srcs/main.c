@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/10 15:10:12 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/13 10:48:15 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main(int argc, char **argv)
 		char	*tab;
 		t_lst	*begin;
 		t_dct	*dictio;
+//		char	**ret;
 
 		tab = ft_read(argv, 1);
 		if (ft_chkchr(tab) == FALSE || ft_chkgrid(tab) == FALSE)
@@ -39,19 +40,16 @@ int		main(int argc, char **argv)
 		else
 			write(1, "NICE !\n", 7);
 		ft_type_angle(&dictio, &begin);
+		ft_fix_shape(&begin);
+		ft_fill_shp(&begin);
 		while (begin->next != NULL)
 		{
-			printf("id: %d, type: %d\n", begin->id, begin->type);
-			printf("letter: %c, angle: %d\n", begin->type_id, begin->angle);
-			printf("%s\n", begin->shape);
+			printf("block id: %d\n", begin->id);
+			ft_print_blk(begin->shp);
 			begin = begin->next;
 		}
-		printf("NB block : %d\n", ft_dctlen(dictio));
-		while (dictio->next != NULL)
-		{
-			printf("code: %d, ltr: %c, rot: %d\n", dictio->type, dictio->letter, dictio->rotation);
-			dictio = dictio->next;
-		}
+//		ret = ft_get_map(begin);
+//		ft_print_map(ret, begin);
 	}
 	return (0);
 }

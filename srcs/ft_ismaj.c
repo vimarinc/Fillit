@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_map.c                                     :+:      :+:    :+:   */
+/*   ft_ismaj.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 18:33:22 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/13 10:26:48 by glarivie         ###   ########.fr       */
+/*   Created: 2015/12/13 10:23:38 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/13 11:31:28 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 
-void		ft_print_map(char **tab, t_lst *begin_lst)
+t_bool		ft_ismaj(char c)
 {
-	int		len;
-	int		index;
-
-	index = -1;
-	len = (ft_lstlen(begin_lst) / 2 + 1) * 4;
-	while (++index < len)
-	{
-		ft_putstr(tab[index]);
-		ft_putchar('\n');
-	}
+	return ((c >= 'A' && c <= 'Z') ? TRUE : FALSE);
 }
