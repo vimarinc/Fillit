@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_try_pl.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/13 13:23:19 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/13 14:59:18 by glarivie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+#include "header.h"
+
+t_bool			ft_try(char **map, char **blk, int col, int line)
+{
+	int		y;
+	int		x;
+	int		chk;
+
+	y = -1;
+	chk = 0;
+	while (++y < 4)
+	{
+		x = -1;
+		while (++x < 4)
+		{
+			if (map[col + y][line + x] == '\0' || map[col + y] == NULL)
+				return (FALSE);
+			if (blk[y][x] == ' ')
+				break ;
+			if (ft_ismaj(blk[y][x]) && map[col + y][line + x] == '.')
+				chk++;
+		}
+	}
+	if (chk == 4)
+		return (TRUE);
+	return (FALSE);
+}
+
+char			**ft_try_pl(char **map, char **blk, int col, int line)
+{
+	int		y;
+	int		x;
+
+	y = -1;
+	if (ft_try(map, blk, col, line) == TRUE)
+	{
+		while (++y < 4)
+		{
+			x = -1;
+			while (++x < 4)
+			{
+				if (blk[y][x] == ' ')
+					break ;
+				if (ft_ismaj(blk[y][x]) && map[col + y][line + x] == '.')
+					map[col + y][line + x] = blk[y][x];
+			}
+		}
+	}
+	return (map);
+}

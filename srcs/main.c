@@ -6,12 +6,13 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/13 12:51:24 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:41:26 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
+#include "color.h"
 
 #include <stdio.h>
 #define DEBUG	printf("DEBUG\n");
@@ -29,7 +30,10 @@ int		main(int argc, char **argv)
 		if (ft_chkchr(tab) == FALSE || ft_chkgrid(tab) == FALSE)
 			write(1, "error\n", 6);
 		else
-			write(1, "NICE !\n", 7);
+		{
+			printf(LCY "\n\nChecking grid..................");
+			printf("[" GRN " OK " RST "]\n");
+		}
 		dictio = ft_dct_init();
 		dictio = ft_fill_dct_1(dictio);
 		begin = ft_lst_init(tab);
@@ -38,28 +42,28 @@ int		main(int argc, char **argv)
 		if (ft_chktype(dictio, begin) == FALSE)
 			write(1, "error\n", 6);
 		else
-			write(1, "NICE !\n", 7);
+		{
+			printf(LCY "Checking shapes................");
+			printf("[" GRN " OK " RST "]\n\n");
+		}
 		ft_type_angle(&dictio, &begin);
 		ft_fix_shape(&begin);
 		ft_fill_shp(&begin);
-		while (begin->next != NULL)
+		
+		t_lst *lst;
+		lst = begin;
+		while (lst->next != NULL)
 		{
-			printf("block id: %d\n", begin->id);
-			ft_print_blk(begin->shp);
-			begin = begin->next;
+			printf("block id = %d\n", lst->id);
+			ft_print_blk(lst->shp);
+			lst = lst->next;
 		}
 		ret = ft_get_map(begin);
-		ret[0][0] = '#';
-		ret[7][7] = '#';
 		ft_print_map(ret);
-
 		ft_putchar('\n');
-		ret = ft_realloc(ret, 9);
-		ft_print_map(ret);
-
-		ret = ft_realloc(ret, 10);
+		ret = ft_put_blk(&begin, ret);
+		ft_print_map_color(ret);
 		ft_putchar('\n');
-		ft_print_map(ret);
 	}
 	return (0);
 }
