@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/13 10:48:15 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/13 11:42:02 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int argc, char **argv)
 		char	*tab;
 		t_lst	*begin;
 		t_dct	*dictio;
-//		char	**ret;
+		char	**ret;
 
 		tab = ft_read(argv, 1);
 		if (ft_chkchr(tab) == FALSE || ft_chkgrid(tab) == FALSE)
@@ -48,8 +48,8 @@ int		main(int argc, char **argv)
 			ft_print_blk(begin->shp);
 			begin = begin->next;
 		}
-//		ret = ft_get_map(begin);
-//		ft_print_map(ret, begin);
+		ret = ft_get_map(begin);
+		ft_print_map(ret);
 	}
 	return (0);
 }
