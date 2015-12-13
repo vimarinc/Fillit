@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/13 12:49:20 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/13 12:51:24 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ int		main(int argc, char **argv)
 		ft_print_map(ret);
 
 		ft_putchar('\n');
-		ret = ft_realloc(ret, 19);
+		ret = ft_realloc(ret, 9);
 		ft_print_map(ret);
 
-		ret = ft_realloc(ret, 20);
+		ret = ft_realloc(ret, 10);
 		ft_putchar('\n');
 		ft_print_map(ret);
 	}
