@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:07:59 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/13 15:30:16 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/14 18:29:55 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef struct		s_dct
 	struct s_dct	*next;
 }					t_dct;
 
+typedef struct		s_point
+{
+	int				x;
+	int				y;
+}					t_point;
+
 char				*ft_read(char **av, int index);
 t_bool				ft_chkchr(char *tab);
 t_bool				ft_chkgrid(char *tab);
@@ -57,7 +63,7 @@ t_dct				*ft_fill_dct_1(t_dct *begin_dct);
 void				ft_type_angle(t_dct **begin_dct, t_lst **begin_lst);
 t_bool				ft_chktype(t_dct *begin_dct, t_lst *begin_lst);
 void				ft_fix_shape(t_lst **begin_lst);
-char				**ft_get_map(t_lst *begin_lst);
+char				**ft_get_map(int len);
 t_bool				ft_ismaj(char c);
 void				ft_print_blk(char **blk);
 void				ft_fill_shp(t_lst **start);
@@ -65,7 +71,7 @@ void				ft_print_map(char **map);
 char				**ft_realloc(char **tab, int size);
 char				**ft_try_pl(char **map, char **blk, int col, int line);
 t_bool				ft_try(char **map, char **blk, int col, int line);
-char				**ft_put_blk(t_lst **start, char **map);
+char				**ft_put_blk(t_lst **start, char **map, int len);
 void				ft_print_map_color(char **map);
 
 #endif

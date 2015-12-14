@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/13 16:41:26 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/14 16:41:26 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int		main(int argc, char **argv)
 		t_lst	*begin;
 		t_dct	*dictio;
 		char	**ret;
+		int		len;
+
+		len = 7;
 
 		tab = ft_read(argv, 1);
 		if (ft_chkchr(tab) == FALSE || ft_chkgrid(tab) == FALSE)
@@ -55,14 +58,16 @@ int		main(int argc, char **argv)
 		while (lst->next != NULL)
 		{
 			printf("block id = %d\n", lst->id);
+			printf((lst->used == FALSE) ? "USED : FALSE\n" : "USED TRUE\n");
 			ft_print_blk(lst->shp);
 			lst = lst->next;
 		}
-		ret = ft_get_map(begin);
+		ret = ft_get_map(len);
 		ft_print_map(ret);
 		ft_putchar('\n');
-		ret = ft_put_blk(&begin, ret);
-		ft_print_map_color(ret);
+		ret = ft_put_blk(&begin, ret, len);
+		if(ret)
+			ft_print_map_color(ret);
 		ft_putchar('\n');
 	}
 	return (0);
