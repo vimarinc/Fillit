@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 07:59:13 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/10 14:55:15 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/15 14:47:13 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			ft_get_type(t_lst **begin_lst)
 	int		cursor;
 
 	lst = *begin_lst;
-	cursor = ft_lstlen(*begin_lst) + 1;
+	cursor = ft_lstlen(*begin_lst);
 	while (--cursor)
 	{
 		lst->type = ft_fill_type(lst->shape);

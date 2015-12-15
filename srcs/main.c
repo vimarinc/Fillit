@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/14 16:41:26 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/15 20:29:35 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ int		main(int argc, char **argv)
 		char	**ret;
 		int		len;
 
-		len = 7;
-
 		tab = ft_read(argv, 1);
 		if (ft_chkchr(tab) == FALSE || ft_chkgrid(tab) == FALSE)
 			write(1, "error\n", 6);
 		else
 		{
 			printf(LCY "\n\nChecking grid..................");
-			printf("[" GRN " OK " RST "]\n");
+			printf("[" GRN " OK " LCY "]\n" RST);
 		}
 		dictio = ft_dct_init();
 		dictio = ft_fill_dct_1(dictio);
@@ -47,27 +45,42 @@ int		main(int argc, char **argv)
 		else
 		{
 			printf(LCY "Checking shapes................");
-			printf("[" GRN " OK " RST "]\n\n");
+			printf("[" GRN " OK " LCY "]\n" RST);
 		}
 		ft_type_angle(&dictio, &begin);
 		ft_fix_shape(&begin);
 		ft_fill_shp(&begin);
+		ft_rm_last(&begin);
+		printf(LCY "Tetriminos detected............[" GRN " 0%d " LCY "]\n\n", ft_lstlen(begin));
 		
 		t_lst *lst;
 		lst = begin;
 		while (lst->next != NULL)
 		{
-			printf("block id = %d\n", lst->id);
-			printf((lst->used == FALSE) ? "USED : FALSE\n" : "USED TRUE\n");
+			printf("id: %d\n", lst->id);
 			ft_print_blk(lst->shp);
 			lst = lst->next;
 		}
+		printf("id: %d\n", lst->id);
+		ft_print_blk(lst->shp);
+		
+		len = ft_lstlen(begin) / 5;
 		ret = ft_get_map(len);
 		ft_print_map(ret);
 		ft_putchar('\n');
-		ret = ft_put_blk(&begin, ret, len);
+
+		t_point		p;
+
+		p.x = 0;
+		p.y = 0;
+		
+		while ((ret = ft_bt(begin, begin, ret, len, p)) == NULL)
+		{
+			ft_lst_clr(begin);
+			ret = ft_get_map(++len);
+		}
 		if(ret)
-			ft_print_map_color(ret);
+			ft_print_map(ret);
 		ft_putchar('\n');
 	}
 	return (0);

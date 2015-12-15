@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/13 13:23:19 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/14 14:53:21 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/15 18:49:36 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,15 @@ char			**ft_try_pl(char **map, char **blk, int col, int line)
 	int		x;
 
 	y = -1;
-	if (ft_try(map, blk, col, line) == TRUE)
+	while (++y < 4)
 	{
-		while (++y < 4)
+		x = -1;
+		while (++x < 4)
 		{
-			x = -1;
-			while (++x < 4)
-			{
-				if (blk[y][x] == ' ')
-					break ;
-				if (ft_ismaj(blk[y][x]) && map[col + y][line + x] == '.')
-					map[col + y][line + x] = blk[y][x];
-			}
+			if (blk[y][x] == ' ')
+				break ;
+			if (ft_ismaj(blk[y][x]) && map[col + y][line + x] == '.')
+				map[col + y][line + x] = blk[y][x];
 		}
 	}
 	return (map);

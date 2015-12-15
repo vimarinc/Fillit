@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/13 14:23:57 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/14 18:29:53 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/15 14:08:05 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**ft_put_blk(t_lst **start, char **map, int len)
 	int		line;
 
 	lst = *start;
-	while (lst->next->next != NULL)
+	while (lst->next != NULL)
 	{
 		while (lst->used == TRUE)
 			lst = lst->next;

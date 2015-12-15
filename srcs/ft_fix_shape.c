@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 15:12:35 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/11 15:26:25 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/15 15:41:56 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void			ft_fix_shape(t_lst **begin_lst)
 	t_lst	*lst;
 
 	lst = *begin_lst;
-	while (lst->id < ft_lstlen(*begin_lst))
+	while (lst->id < ft_lstlen(*begin_lst) - 1)
 	{
 		lst->shape = ft_rm_col(lst->shape);
 		lst->shape = ft_rm_ln(lst->shape);

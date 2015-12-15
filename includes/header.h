@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:07:59 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/14 18:29:55 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/15 20:01:27 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,13 @@ void				ft_print_map(char **map);
 char				**ft_realloc(char **tab, int size);
 char				**ft_try_pl(char **map, char **blk, int col, int line);
 t_bool				ft_try(char **map, char **blk, int col, int line);
-char				**ft_put_blk(t_lst **start, char **map, int len);
+//char				**ft_put_blk(t_lst **start, char **map, int len);
 void				ft_print_map_color(char **map);
+char				**ft_rm_pl(char **map, char **blk);
+void				ft_rm_last(t_lst **start);
+char				**ft_bt(t_lst *lst_start, t_lst *lst, char **map,
+							int len, t_point p);
+
+void				ft_lst_clr(t_lst *start);
 
 #endif

@@ -1,48 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlen.c                                        :+:      :+:    :+:   */
+/*   ft_rm_pl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 09:27:00 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/15 14:40:16 by glarivie         ###   ########.fr       */
+/*   Created: 2015/12/15 13:01:01 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/15 16:07:13 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 
-int		ft_lstlen(t_lst *begin_lst)
+char		**ft_rm_pl(char **map, char **blk)
 {
-	t_lst	*lst;
-	int		cursor;
+	t_point		p;
+	char		c;
 
-	lst = begin_lst;
-	cursor = 0;
-	if (begin_lst == NULL)
-		return (0);
-	while (lst->next != NULL)
+	p.x = -1;
+	c = '\0';
+	while (blk[0][(p.x = p.x + 1)])
 	{
-		lst = lst->next;
-		cursor++;
+		if (ft_ismaj(blk[p.y][p.x]))
+			c = blk[p.y][p.x];
 	}
-	return (cursor + 1);
-}
-
-int		ft_dctlen(t_dct *begin_dct)
-{
-	t_dct	*dct;
-	int		cursor;
-
-	dct = begin_dct;
-	cursor = 0;
-	if (begin_dct == NULL)
-		return (1);
-	while (dct->next != NULL)
+	if (ft_ismaj(c))
 	{
-		cursor++;
-		dct = dct->next;
+		p.y = -1;
+		while (map[(p.y)++] != NULL)
+		{
+			p.x = -1;
+			while (map[p.y][(p.x = p.x + 1)])
+			{
+				if (map[p.y][p.x] == c)
+					map[p.y][p.x] = '.';
+			}
+		}
 	}
-	return (cursor);
+	return (map);
 }
