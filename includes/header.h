@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:07:59 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/15 20:01:27 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/16 13:58:04 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define BUFFER 546
 # define TRUE 1
 # define FALSE 0
+# define DEBUG 1
+# define TEST if(DEBUG == 1){ft_putstr("DEBUG ");}
 
 typedef int			t_bool;
 
@@ -79,5 +81,8 @@ char				**ft_bt(t_lst *lst_start, t_lst *lst, char **map,
 							int len, t_point p);
 
 void				ft_lst_clr(t_lst *start);
+void				ft_free_all(t_dct **begin_dct, t_lst **begin_lst, char **map);
+t_bool				ft_chk_err(int ac, char *buf);
+void				ft_fillit(int ac, char **av);
 
 #endif

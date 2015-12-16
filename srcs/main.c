@@ -6,16 +6,13 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/15 20:29:35 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/16 14:51:19 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 #include "color.h"
-
-#include <stdio.h>
-#define DEBUG	printf("DEBUG\n");
 
 int		main(int argc, char **argv)
 {
@@ -51,6 +48,7 @@ int		main(int argc, char **argv)
 		ft_fix_shape(&begin);
 		ft_fill_shp(&begin);
 		ft_rm_last(&begin);
+
 		printf(LCY "Tetriminos detected............[" GRN " 0%d " LCY "]\n\n", ft_lstlen(begin));
 		
 		t_lst *lst;
@@ -64,7 +62,7 @@ int		main(int argc, char **argv)
 		printf("id: %d\n", lst->id);
 		ft_print_blk(lst->shp);
 		
-		len = ft_lstlen(begin) / 5;
+		len = (ft_lstlen(begin) <= 8) ? 2 : 5;
 		ret = ft_get_map(len);
 		ft_print_map(ret);
 		ft_putchar('\n');
@@ -79,9 +77,12 @@ int		main(int argc, char **argv)
 			ft_lst_clr(begin);
 			ret = ft_get_map(++len);
 		}
-		if(ret)
-			ft_print_map(ret);
 		ft_putchar('\n');
+		if(ret)
+			ft_print_map_color(ret);
+		ft_putchar('\n');
+		ft_free_all(&dictio, &begin, ret);
 	}
 	return (0);
+	//ft_fillit(argc, argv);
 }

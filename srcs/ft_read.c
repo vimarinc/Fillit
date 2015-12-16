@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:13:49 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/08 09:29:34 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/16 14:10:11 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ char	*ft_read(char **av, int index)
 	unsigned long long	rd;
 	char				*tab;
 
-	tab = (char *)malloc(sizeof(char) * BUFFER);
-	fd = open(av[index], O_RDONLY);
-	rd = read(fd, tab, BUFFER);
+	if(!(tab = (char *)malloc(sizeof(char) * BUFFER)))
+		return (NULL);
+	if(!(fd = open(av[index], O_RDONLY)))
+		return (NULL);
+	if(!(rd = read(fd, tab, BUFFER)))
+		return (NULL);
 	close(fd);
 	return (tab);
 }

@@ -1,46 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chktype.c                                       :+:      :+:    :+:   */
+/*   ft_chk_err.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/09 23:05:52 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/16 12:26:20 by glarivie         ###   ########.fr       */
+/*   Created: 2015/12/16 12:07:15 by glarivie          #+#    #+#             */
+/*   Updated: 2015/12/16 13:37:15 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 
-t_bool		ft_chktype(t_dct *begin_dct, t_lst *begin_lst)
+t_bool		ft_chk_err(int ac, char *buf)
 {
-	t_dct	*dct;
-	t_lst	*lst;
-	int		count;
-
-	lst = begin_lst;
-	count = 0;
-	while (lst->next != NULL)
-	{
-		dct = begin_dct;
-		while (dct->next != NULL)
-		{
-			if (lst->type == dct->type)
-			{
-				count++;
-				break;
-			}
-			else
-				dct = dct->next;
-		}
-		lst = lst->next;
-	}
-	if (count == ft_lstlen(begin_lst) - 1) 
-		return (TRUE);
-	else
+	if (ac != 2 || ft_chkchr(buf) == FALSE || ft_chkgrid(buf) == FALSE)
 	{
 		ft_putstr("error\n");
 		return (FALSE);
 	}
+	return (TRUE);
 }
