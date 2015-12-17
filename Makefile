@@ -6,7 +6,7 @@
 #    By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/16 14:27:46 by glarivie          #+#    #+#              #
-#    Updated: 2015/12/16 13:38:06 by glarivie         ###   ########.fr        #
+#    Updated: 2015/12/17 14:11:37 by glarivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SRCS 	= srcs/main.c			srcs/ft_chkchr.c		srcs/ft_chkgrid.c	\
 	  	srcs/libft.a			srcs/ft_dct_blk.c		srcs/ft_fill_dct_1.c\
 		srcs/ft_chktype.c		srcs/ft_fix_shape.c		srcs/ft_get_map.c	\
 		srcs/ft_print_map.c		srcs/ft_ismaj.c			srcs/ft_print_blk.c	\
-		srcs/ft_fill_shp.c		srcs/ft_realloc.c		srcs/ft_try_pl.c	\
-		srcs/ft_print_map_color.c 						srcs/ft_lst_clr.c	\
+		srcs/ft_fill_shp.c		srcs/ft_try_pl.c							\
+		srcs/ft_lst_clr.c													\
 		srcs/ft_rm_pl.c			srcs/ft_rm_last.c		srcs/ft_bt.c		\
 		srcs/ft_free_all.c		srcs/ft_chk_err.c		srcs/ft_fillit.c	\
 

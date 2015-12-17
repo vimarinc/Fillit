@@ -6,17 +6,16 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:59:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/16 14:51:19 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/17 14:13:08 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
-#include "color.h"
 
 int		main(int argc, char **argv)
 {
-	if (argc == 2)
+/*	if (argc == 2)
 	{
 		char	*tab;
 		t_lst	*begin;
@@ -84,5 +83,6 @@ int		main(int argc, char **argv)
 		ft_free_all(&dictio, &begin, ret);
 	}
 	return (0);
-	//ft_fillit(argc, argv);
+*/	ft_fillit(argc, argv);
+	return (0);
 }

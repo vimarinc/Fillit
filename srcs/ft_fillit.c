@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:05:03 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/16 14:03:05 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/17 14:15:08 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_fillit(int ac, char **av)
 		map = ft_get_map(++len);
 	}
 
-	ft_putchar('\n');
+	ft_putstr("\n\n");
 
 	if (map)
 		ft_print_map(map);
