@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/13 11:38:19 by glarivie          #+#    #+#             */
-/*   Updated: 2015/11/27 16:13:54 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/11/26 09:49:11 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 
 int					ft_isalpha(int c);
-t_bool				ft_isdigit(int c);
+int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
@@ -95,12 +95,9 @@ char				*ft_strtrim(const char *s);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 
 size_t				ft_strlen(const char *s);
-int					ft_intlen(int n);
+size_t				ft_intlen(int n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 
 t_bool				ft_isspace(char c);
-t_bool				ft_ishexa(int c);
-void				ft_swap(int a, int b);
-void				ft_sort_int_tab(int *tab, size_t size);
-int					ft_atobin(int c);
+
 #endif

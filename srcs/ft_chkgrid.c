@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
 static int	ft_chrcnt(char *tab, char c)

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
 static t_lst	*ft_lst_add(t_lst *begin_lst, int id)

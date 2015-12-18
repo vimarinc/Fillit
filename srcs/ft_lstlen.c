@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
 int		ft_lstlen(t_lst *begin_lst)

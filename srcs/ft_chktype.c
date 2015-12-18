@@ -6,11 +6,10 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 23:05:52 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/16 12:26:20 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/18 11:27:35 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
 t_bool		ft_chktype(t_dct *begin_dct, t_lst *begin_lst)
@@ -29,18 +28,15 @@ t_bool		ft_chktype(t_dct *begin_dct, t_lst *begin_lst)
 			if (lst->type == dct->type)
 			{
 				count++;
-				break;
+				break ;
 			}
 			else
 				dct = dct->next;
 		}
 		lst = lst->next;
 	}
-	if (count == ft_lstlen(begin_lst) - 1) 
+	if (count == ft_lstlen(begin_lst) - 1)
 		return (TRUE);
-	else
-	{
-		ft_putstr("error\n");
-		return (FALSE);
-	}
+	ft_putstr("error\n");
+	return (FALSE);
 }

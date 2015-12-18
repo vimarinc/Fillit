@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:07:59 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/17 14:10:07 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/18 12:57:25 by ascholle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft.h"
 
 # define BUFFER 546
 # define TRUE 1
 # define FALSE 0
-# define DEBUG 1
-# define TEST if(DEBUG == 1){ft_putstr("DEBUG ");}
 
 typedef int			t_bool;
 
@@ -72,14 +71,17 @@ void				ft_fill_shp(t_lst **start);
 void				ft_print_map(char **map);
 char				**ft_try_pl(char **map, char **blk, int col, int line);
 t_bool				ft_try(char **map, char **blk, int col, int line);
-char				**ft_rm_pl(char **map, char **blk);
+char				**ft_rm_pl(char **map, char **blk, int len);
+char				ft_rm_pl2(char **blk);
 void				ft_rm_last(t_lst **start);
-char				**ft_bt(t_lst *lst_start, t_lst *lst, char **map,
-							int len, t_point p);
-
+char				**ft_bt(t_lst *lst, char **map, int len, t_point p);
 void				ft_lst_clr(t_lst *start);
-void				ft_free_all(t_dct **begin_dct, t_lst **begin_lst, char **map);
+void				ft_free_all(t_dct **begin_dct, t_lst **begin_lst,
+					char **map);
 t_bool				ft_chk_err(int ac, char *buf);
-void				ft_fillit(int ac, char **av);
+void				ft_fillit(int ac, char **av, int len);
+void				ft_fillit2(char **map, t_lst **begin_lst, t_dct **begin_dct,
+					int len);
+t_point				ft_inc_p(t_point p, int len);
 
 #endif

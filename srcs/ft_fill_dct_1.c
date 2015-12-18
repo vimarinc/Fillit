@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
 static t_dct	*ft_fill_dct_2(t_dct *begin_dct)

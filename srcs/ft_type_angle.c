@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
 void		ft_type_angle(t_dct **begin_dct, t_lst **begin_lst)

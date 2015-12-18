@@ -6,70 +6,38 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 16:56:20 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/16 13:57:50 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/18 12:31:30 by ascholle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
-static t_bool	ft_isplaced(t_lst *start)
+t_point				ft_inc_p(t_point p, int len)
 {
-	while (start->next != NULL)
-	{
-		if (start->used == FALSE)
-			return (FALSE);
-		start = start->next;
-	}
-	return (TRUE);
+	p.x = (p.x + 1) % len;
+	if (p.x == 0)
+		p.y = (p.y + 1) % len;
+	return (p);
 }
 
-char	**ft_bt(t_lst *lst_start, t_lst *lst, char **map, int len, t_point p)
+char				**ft_bt(t_lst *lst, char **map, int len, t_point p)
 {
+	char	**tmp_map;
+
 	if (lst == NULL)
-	{
-		if (p.x == 0 && p.y == 0)
-			return (NULL);
-		p.x = (p.x + 1) % len;
-		p.y = (p.x == 0) ? p.y + 1 : p.y;
-		lst = lst_start;
-	}
-	if (p.y >= len)
+		return (map);
+	if ((p.x == len - 1 && p.y == len - 1))
 		return (NULL);
-	while (lst->used == TRUE)
-	{
-		lst = lst->next;
-		if (lst == NULL)
-		{
-			if (ft_isplaced(lst_start) == TRUE)
-				return (map);
-			p.x = (p.x + 1) % len;
-			p.y = (p.x == 0) ? p.y + 1 : p.y;
-			return (ft_bt(lst_start, lst_start, map, len, p));
-		}
-	}
-	if (ft_try(map, lst->shp, p.y, p.x))
+	if (ft_try(map, lst->shp, p.y, p.x) == TRUE)
 	{
 		map = ft_try_pl(map, lst->shp, p.y, p.x);
 		lst->used = TRUE;
-		p.x = (p.x + 1) % len;
-		p.y = (p.x == 0) ? p.y + 1 : p.y;
-		if (ft_bt(lst_start, lst_start, map, len, p) == NULL)
+		if ((tmp_map = ft_bt(lst->next, map, len, p)) == NULL)
 		{
-			TEST
-			p.y = (p.x == 0) ? p.y - 1 : p.y;
-			p.x = (p.x == 0) ? len - 1 : p.x--;
-			map = ft_rm_pl(map, lst->shp);
-			return (ft_bt(lst_start, lst->next, map, len, p));
+			map = ft_rm_pl(map, lst->shp, len);
+			return (ft_bt(lst, map, len, ft_inc_p(p, len)));
 		}
+		return (tmp_map);
 	}
-	if (p.x == len - 1 && p.y == len - 1)
-	{
-		p.x = 0;
-		p.y = 0;
-		return (ft_bt(lst_start, lst->next, map, len, p));
-	}
-	p.x = (p.x + 1) % len;
-	p.y = (p.x == 0) ? p.y + 1 : p.y;
-	return (ft_bt(lst_start, lst, map, len, p));
+	return (ft_bt(lst, map, len, ft_inc_p(p, len)));
 }

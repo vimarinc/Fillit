@@ -5,41 +5,81 @@
 #                                                     +:+ +:+         +:+      #
 #    By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/09/16 14:27:46 by glarivie          #+#    #+#              #
-#    Updated: 2015/12/17 14:11:37 by glarivie         ###   ########.fr        #
+#    Created: 2015/12/18 10:23:40 by glarivie          #+#    #+#              #
+#    Updated: 2015/12/18 11:21:04 by glarivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 	= fillit
-SRCS 	= srcs/main.c			srcs/ft_chkchr.c		srcs/ft_chkgrid.c	\
-		srcs/ft_lst_init.c		srcs/ft_fill_lst.c		srcs/ft_get_type.c	\
-		srcs/ft_lstlen.c		srcs/ft_read.c			srcs/ft_type_angle.c\
-	  	srcs/libft.a			srcs/ft_dct_blk.c		srcs/ft_fill_dct_1.c\
-		srcs/ft_chktype.c		srcs/ft_fix_shape.c		srcs/ft_get_map.c	\
-		srcs/ft_print_map.c		srcs/ft_ismaj.c			srcs/ft_print_blk.c	\
-		srcs/ft_fill_shp.c		srcs/ft_try_pl.c							\
-		srcs/ft_lst_clr.c													\
-		srcs/ft_rm_pl.c			srcs/ft_rm_last.c		srcs/ft_bt.c		\
-		srcs/ft_free_all.c		srcs/ft_chk_err.c		srcs/ft_fillit.c	\
+CC				=	gcc
+NAME			=	fillit
+FLAGS			=	-Wall -Wextra -Werror
+LIB_PATH		=	libft/
+LIB				=	$(LIB_PATH)libft.a
+LIB_LINK		=	-L $(LIB_PATH) -lft
+INCLUDES		=	-I $(LIB_PATH) -I ./includes
+SRCS			=	srcs/main.c					\
+					srcs/ft_bt.c				\
+					srcs/ft_chk_err.c			\
+					srcs/ft_chkchr.c			\
+					srcs/ft_chkgrid.c			\
+					srcs/ft_chktype.c			\
+					srcs/ft_dct_blk.c			\
+					srcs/ft_fill_dct_1.c		\
+					srcs/ft_fill_lst.c			\
+					srcs/ft_fill_shp.c			\
+					srcs/ft_fillit.c			\
+					srcs/ft_fix_shape.c			\
+					srcs/ft_free_all.c			\
+					srcs/ft_get_map.c			\
+					srcs/ft_get_type.c			\
+					srcs/ft_ismaj.c				\
+					srcs/ft_lst_clr.c			\
+					srcs/ft_lst_init.c			\
+					srcs/ft_lstlen.c			\
+					srcs/ft_print_map.c			\
+					srcs/ft_read.c				\
+					srcs/ft_rm_last.c			\
+					srcs/ft_rm_pl.c				\
+					srcs/ft_try_pl.c			\
+					srcs/ft_type_angle.c
+OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
-INC		= ./includes
-FLAGS	= -Wall -Wextra -Werror
-CC		= gcc
-C_OK	= "\033[35m"
-C_NO	= "\033[00m"
-FILLIT	= $(C_OK)Fillit$(C_NO)
+# COLORS
+C_NO			=	"\033[00m"
+C_OK			=	"\033[35m"
+C_GOOD			=	"\033[32m"
+C_ERROR			=	"\033[31m"
+C_WARN			=	"\033[33m"
 
-all: $(NAME)
+# DBG MESSAGE
+SUCCESS			=	$(C_GOOD)SUCCESS$(C_NO)
+OK				=	$(C_OK)OK$(C_NO)
 
-$(NAME):
-	@echo ""
-	@$(CC) $(FLAGS) -o $(NAME) $(SRCS) -I$(INC)
-	@echo "Création de" $(FILLIT)
-	@echo ""
+
+all: obj $(NAME)
+
+$(NAME): $(LIB) $(OBJS)
+	@$(CC) $(FLAGS) -o $@ $^ $(LIB_LINK)
+	@echo "Compiling" [ $(NAME) ] $(SUCCESS)
+
+$(LIB):
+	@make -C $(LIB_PATH)
+
+obj:
+	@mkdir -p obj
+
+obj/%.o: srcs/%.c ./includes/*.h
+	@$(CC) $(FLAGS) $(INCLUDES) -c -o $@ $<
+	@echo "Linking" [ $< ] $(OK)
 
 clean:
-	@rm -f $(NAME)
+	@rm -f $(OBJS)
+	@rm -rf obj
+	@echo "Cleaning" [ $(NAME) ] "..." $(OK)
 
 fclean: clean
+	@rm -f $(NAME)
+	@make -C $(LIB_PATH) fclean
+	@echo "Delete" [ $(NAME) ] $(OK)
 
 re: fclean all

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_blk.c                                     :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/13 10:28:23 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/15 15:43:12 by glarivie         ###   ########.fr       */
+/*   Created: 2015/08/11 18:52:45 by glarivie          #+#    #+#             */
+/*   Updated: 2015/11/26 11:37:03 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "header.h"
 
-void		ft_print_blk(char **blk)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	int		col;
+	int		index;
 
-	col = -1;
-	while (++col < 4)
-	{
-		ft_putstr(blk[col]);
-		ft_putchar('\n');
-	}
+	index = 0;
+	while (s1[index] && s2[index] && s1[index] == s2[index])
+		index++;
+	return (s1[index] - s2[index]);
 }

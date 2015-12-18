@@ -6,13 +6,11 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 17:40:07 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/14 14:58:40 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/18 11:32:23 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
-
 
 char		**ft_get_map(int len)
 {

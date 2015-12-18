@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
 void		ft_fill_lst(char *tab, t_lst **begin_lst)

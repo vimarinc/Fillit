@@ -6,35 +6,46 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 13:01:01 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/15 16:07:13 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/18 12:57:22 by ascholle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
-char		**ft_rm_pl(char **map, char **blk)
+char		ft_rm_pl2(char **blk)
 {
-	t_point		p;
+	int		line;
+
+	line = -1;
+	while (++line < 4)
+	{
+		if (ft_ismaj(blk[0][line]) == TRUE)
+			return (blk[0][line]);
+	}
+	return ('0');
+}
+
+char		**ft_rm_pl(char **map, char **blk, int len)
+{
+	int			col;
+	int			line;
 	char		c;
 
-	p.x = -1;
-	c = '\0';
-	while (blk[0][(p.x = p.x + 1)])
+	c = '0';
+	if (map != NULL && blk != NULL)
 	{
-		if (ft_ismaj(blk[p.y][p.x]))
-			c = blk[p.y][p.x];
-	}
-	if (ft_ismaj(c))
-	{
-		p.y = -1;
-		while (map[(p.y)++] != NULL)
+		c = ft_rm_pl2(blk);
+		if (c != '0')
 		{
-			p.x = -1;
-			while (map[p.y][(p.x = p.x + 1)])
+			col = -1;
+			while (++col < len)
 			{
-				if (map[p.y][p.x] == c)
-					map[p.y][p.x] = '.';
+				line = -1;
+				while (++line < len)
+				{
+					if (map[col][line] == c)
+						map[col][line] = '.';
+				}
 			}
 		}
 	}

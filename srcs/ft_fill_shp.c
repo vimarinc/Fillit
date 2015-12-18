@@ -6,11 +6,10 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/13 10:37:33 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/13 16:41:18 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/18 12:33:35 by ascholle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
 
 static char		**ft_clean_blk(char **blk)
@@ -36,27 +35,23 @@ void			ft_fill_shp(t_lst **start)
 {
 	t_lst		*lst;
 	int			index;
-	int			col;
-	int			line;
+	t_point		p;
 
 	lst = *start;
 	while (lst->next != NULL)
 	{
 		index = -1;
-		col = 0;
-		line = 0;
+		p.y = 0;
+		p.x = 0;
 		while (lst->shape[++index])
 		{
 			if (ft_ismaj(lst->shape[index]) || lst->shape[index] == '.')
 			{
-				lst->shp[col][line] = lst->shape[index];
-				line++;
+				lst->shp[p.y][p.x] = lst->shape[index];
+				p.x = p.x + 1;
 			}
 			if (lst->shape[index] == '\n')
-			{
-				line = 0;
-				col++;
-			}
+				p = ft_inc_p(p, 5);
 		}
 		lst->shp = ft_clean_blk(lst->shp);
 		lst = lst->next;

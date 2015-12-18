@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "header.h"
-
-#include <stdio.h>
 
 t_dct		*ft_dct_blk(t_dct *begin_dct, int code, char ltr, int rot)
 {
