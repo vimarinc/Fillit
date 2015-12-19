@@ -6,7 +6,7 @@
 #    By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/16 14:27:46 by glarivie          #+#    #+#              #
-#    Updated: 2015/12/19 07:40:51 by glarivie         ###   ########.fr        #
+#    Updated: 2015/12/19 13:09:56 by glarivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ FLAGS	= -Wall -Wextra -Werror
 CC		= gcc
 AR		= ar rc
 RANLIB	= ranlib
-C_OK	= "\033[35m"
+C_OK	= "\033[34m"
 C_NO	= "\033[00m"
 
 all: $(NAME)
