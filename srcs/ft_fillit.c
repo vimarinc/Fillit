@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:05:03 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/18 12:42:06 by ascholle         ###   ########.fr       */
+/*   Updated: 2015/12/19 08:19:15 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_fillit(int ac, char **av, int len)
 	begin_lst = ft_lst_init(buf);
 	ft_fill_lst(buf, &begin_lst);
 	ft_get_type(&begin_lst);
-	if (ft_chktype(begin_dct, begin_lst) == FALSE)
+	if (ft_chk_err_2(begin_lst, begin_dct) == FALSE)
 		return ;
 	ft_type_angle(&begin_dct, &begin_lst);
 	ft_fix_shape(&begin_lst);

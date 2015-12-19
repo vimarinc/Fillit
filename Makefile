@@ -6,7 +6,7 @@
 #    By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/18 10:23:40 by glarivie          #+#    #+#              #
-#    Updated: 2015/12/18 11:21:04 by glarivie         ###   ########.fr        #
+#    Updated: 2015/12/19 08:30:25 by glarivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
 INCLUDES		=	-I $(LIB_PATH) -I ./includes
-SRCS			=	srcs/main.c					\
-					srcs/ft_bt.c				\
+SRCS			=	srcs/ft_main_fillit.c		\
+					srcs/ft_resolve.c			\
 					srcs/ft_chk_err.c			\
 					srcs/ft_chkchr.c			\
 					srcs/ft_chkgrid.c			\
@@ -37,11 +37,12 @@ SRCS			=	srcs/main.c					\
 					srcs/ft_lst_init.c			\
 					srcs/ft_lstlen.c			\
 					srcs/ft_print_map.c			\
-					srcs/ft_read.c				\
+					srcs/ft_read_buf.c			\
 					srcs/ft_rm_last.c			\
 					srcs/ft_rm_pl.c				\
 					srcs/ft_try_pl.c			\
-					srcs/ft_type_angle.c
+					srcs/ft_type_angle.c		\
+					srcs/ft_chk_wtf.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 # COLORS
@@ -52,15 +53,15 @@ C_ERROR			=	"\033[31m"
 C_WARN			=	"\033[33m"
 
 # DBG MESSAGE
-SUCCESS			=	$(C_GOOD)SUCCESS$(C_NO)
-OK				=	$(C_OK)OK$(C_NO)
+SUCCESS			=	[ $(C_GOOD)OK$(C_NO) ]
+OK				=	[ $(C_OK)OK$(C_NO) ]
 
 
 all: obj $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
 	@$(CC) $(FLAGS) -o $@ $^ $(LIB_LINK)
-	@echo "Compiling" [ $(NAME) ] $(SUCCESS)
+	@echo "Compiling" $(NAME) "\t\t" $(SUCCESS)
 
 $(LIB):
 	@make -C $(LIB_PATH)
@@ -70,16 +71,16 @@ obj:
 
 obj/%.o: srcs/%.c ./includes/*.h
 	@$(CC) $(FLAGS) $(INCLUDES) -c -o $@ $<
-	@echo "Linking" [ $< ] $(OK)
+	@echo "Linking" $< "\t" $(OK)
 
 clean:
 	@rm -f $(OBJS)
 	@rm -rf obj
-	@echo "Cleaning" [ $(NAME) ] "..." $(OK)
+	@echo "Cleaning" $(NAME) "\t\t" $(OK)
 
 fclean: clean
 	@rm -f $(NAME)
 	@make -C $(LIB_PATH) fclean
-	@echo "Delete" [ $(NAME) ] $(OK)
+	@echo "Delete" $(NAME) "\t\t\t" $(OK)
 
 re: fclean all

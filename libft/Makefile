@@ -6,7 +6,7 @@
 #    By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/16 14:27:46 by glarivie          #+#    #+#              #
-#    Updated: 2015/12/18 11:24:26 by glarivie         ###   ########.fr        #
+#    Updated: 2015/12/19 07:40:51 by glarivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,23 +35,27 @@ FLAGS	= -Wall -Wextra -Werror
 CC		= gcc
 AR		= ar rc
 RANLIB	= ranlib
+C_OK	= "\033[35m"
+C_NO	= "\033[00m"
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo ""
 	@$(AR) $(NAME) $(OBJS)
 	@$(RANLIB) $(NAME)
-	@echo "Création de $(NAME)"
+	@echo "Compiling" $(NAME) "\t\t" [ $(C_OK)OK$(C_NO) ]
 
 .obj/%.o: %.c
 	@mkdir -p .obj
 	@$(CC) -c $< -o $@ $(FLAGS) -I $(INC)
 
 clean:
-	rm -rf .obj
+	@rm -rf .obj
+	@echo "Cleaning" $(NAME) "\t\t" [ $(C_OK)OK$(C_NO) ]
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Delete" $(NAME) "\t\t\t" [ $(C_OK)OK$(C_NO) ]
 
 re: fclean all
+	@echo ""

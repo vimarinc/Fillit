@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 11:07:59 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/18 12:57:25 by ascholle         ###   ########.fr       */
+/*   Updated: 2015/12/19 08:12:16 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ void				ft_fillit(int ac, char **av, int len);
 void				ft_fillit2(char **map, t_lst **begin_lst, t_dct **begin_dct,
 					int len);
 t_point				ft_inc_p(t_point p, int len);
+t_bool				ft_chk_wtf(t_lst *begin_lst);
+t_bool				ft_chk_err_2(t_lst *begin_lst, t_dct *begin_dct);
 
 #endif

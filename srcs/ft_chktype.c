@@ -6,7 +6,7 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 23:05:52 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/18 11:27:35 by glarivie         ###   ########.fr       */
+/*   Updated: 2015/12/19 08:07:27 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ t_bool		ft_chktype(t_dct *begin_dct, t_lst *begin_lst)
 	}
 	if (count == ft_lstlen(begin_lst) - 1)
 		return (TRUE);
-	ft_putstr("error\n");
 	return (FALSE);
 }

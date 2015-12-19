@@ -6,11 +6,18 @@
 /*   By: glarivie <glarivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 16:56:20 by glarivie          #+#    #+#             */
-/*   Updated: 2015/12/18 12:31:30 by ascholle         ###   ########.fr       */
+/*   Updated: 2015/12/19 08:27:12 by glarivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+t_point				ft_rst_p(t_point p)
+{
+	p.x = 0;
+	p.y = 0;
+	return (p);
+}
 
 t_point				ft_inc_p(t_point p, int len)
 {
@@ -32,7 +39,7 @@ char				**ft_bt(t_lst *lst, char **map, int len, t_point p)
 	{
 		map = ft_try_pl(map, lst->shp, p.y, p.x);
 		lst->used = TRUE;
-		if ((tmp_map = ft_bt(lst->next, map, len, p)) == NULL)
+		if ((tmp_map = ft_bt(lst->next, map, len, ft_rst_p(p))) == NULL)
 		{
 			map = ft_rm_pl(map, lst->shp, len);
 			return (ft_bt(lst, map, len, ft_inc_p(p, len)));
